@@ -102,3 +102,8 @@ function mousePressed() {
         }
     }
 }
+
+function keyPressed() {
+    gameOver = false;
+    setup();
+}
