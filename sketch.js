@@ -7,6 +7,8 @@ let size;
 
 let isCross = true;
 
+let gameOver = false;
+
 function make2DArray(cols, rows) {
     let field = [cols];
     for (let i = 0; i < rows; i++) {
@@ -29,11 +31,58 @@ function setup() {
 }
 
 function draw() {
-    background(41);
+    if (!gameOver) {
+        background(41);
 
+        for (let i = 0; i < 3; i++) {
+            for (let j = 0; j < 3; j++) {
+                field[i][j].draw();
+            }
+        }
+
+        check();
+    }
+}
+
+function check() {
+    checkDiag();
+    checkVert();
+    checkHoris();
+}
+
+function checkDiag() {
+    if ((field[0][0].fill === 1 && field[1][1].fill === 1 && field[2][2].fill === 1) ||
+        (field[0][0].fill === 2 && field[1][1].fill === 2 && field[2][2].fill === 2)) {
+        field[0][0].fillChecked();
+        field[1][1].fillChecked();
+        field[2][2].fillChecked();
+    }
+    if ((field[0][2].fill === 1 && field[1][1].fill === 1 && field[2][0].fill === 1) ||
+        (field[0][2].fill === 2 && field[1][1].fill === 2 && field[2][0].fill === 2)) {
+        field[0][2].fillChecked();
+        field[1][1].fillChecked();
+        field[2][0].fillChecked();
+    }
+}
+
+function checkVert() {
     for (let i = 0; i < 3; i++) {
-        for (let j = 0; j < 3; j++) {
-            field[i][j].draw();
+        if ((field[i][0].fill === 1 && field[i][1].fill === 1 && field[i][2].fill === 1) ||
+            (field[i][0].fill === 2 && field[i][1].fill === 2 && field[i][2].fill === 2)) {
+            field[i][0].fillChecked();
+            field[i][1].fillChecked();
+            field[i][2].fillChecked();
+        }
+    }
+}
+
+function checkHoris() {
+    for (let i = 0; i < 3; i++) {
+        if ((field[0][i].fill === 1 && field[1][i].fill === 1 && field[2][i].fill === 1) ||
+            (field[0][i].fill === 2 && field[1][i].fill === 2 && field[2][i].fill === 2)) {
+            field[0][i].fillChecked();
+            field[1][i].fillChecked();
+            field[2][i].fillChecked();
         }
     }
 }

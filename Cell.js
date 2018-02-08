@@ -60,4 +60,14 @@ class Cell {
         fill(41);
         ellipse(this.i * this.size + this.size / 2, this.j * this.size + this.size / 2, this.size - 60);
     }
+
+    fillChecked() {
+        fill(255, 50, 50, 90);
+        noStroke();
+        rectMode(CENTER);
+        rect(this.i * this.size + this.size / 2, this.j * this.size + this.size / 2,
+            this.size - 5, this.size - 5);
+
+        gameOver = true;
+    }
 }
