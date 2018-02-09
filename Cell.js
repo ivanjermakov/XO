@@ -62,11 +62,24 @@ class Cell {
     }
 
     fillChecked() {
-        fill(255, 50, 50, 90);
+        fill(255, 50, 50, 50);
         noStroke();
         rectMode(CENTER);
         rect(this.i * this.size + this.size / 2, this.j * this.size + this.size / 2,
             this.size - 5, this.size - 5);
+
+        // fill(255, 0, 0);
+        // if (this.fill === 1) {
+        // line(this.i * this.size + 40, this.j * this.size + 40,
+        //     this.i * this.size + this.size - 40, this.j * this.size + this.size - 40);
+        // line(this.i * this.size + this.size - 40, this.j * this.size + 40,
+        //     this.i * this.size + 40, this.j * this.size + this.size - 40);
+        // } else if (this.fill === 2) {
+        //     ellipseMode(CENTER);
+        //     ellipse(this.i * this.size + this.size / 2, this.j * this.size + this.size / 2, this.size - 40);
+        //     fill(41);
+        //     ellipse(this.i * this.size + this.size / 2, this.j * this.size + this.size / 2, this.size - 60);
+        // }
 
         gameOver = true;
     }
